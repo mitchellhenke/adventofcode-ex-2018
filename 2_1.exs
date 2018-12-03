@@ -1,6 +1,5 @@
 File.read!("data/2.txt")
-|> String.split("\n")
-|> Enum.reject(& &1 == "")
+|> String.split("\n", trim: true)
 |> Enum.reduce(%{two: 0, three: 0}, fn(box_id, acc) ->
   letters = String.graphemes(box_id)
   unique = MapSet.new(letters)

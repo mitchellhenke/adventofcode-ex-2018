@@ -1,6 +1,5 @@
 list_of_numbers = File.read!("data/1.txt")
-|> String.split("\n")
-|> Enum.reject(& &1 == "")
+|> String.split("\n", trim: true)
 
 Stream.cycle(list_of_numbers)
 |> Enum.reduce_while({0, MapSet.new([0])}, fn(number, {acc, seen_frequencies}) ->

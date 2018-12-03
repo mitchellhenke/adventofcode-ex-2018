@@ -1,6 +1,5 @@
 all_claims = File.read!("data/3.txt")
-             |> String.split("\n")
-             |> Enum.reject(& &1 == "")
+             |> String.split("\n", trim: true)
              |> Enum.reduce(MapSet.new, fn(row, acc) ->
                [_num, point_and_size] = String.split(row, "@ ")
                [point, size] = String.split(point_and_size, ": ")

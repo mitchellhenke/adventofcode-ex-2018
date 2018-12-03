@@ -1,6 +1,5 @@
 ids = File.read!("data/2.txt")
-      |> String.split("\n")
-      |> Enum.reject(& &1 == "")
+      |> String.split("\n", trim: true)
 
 Enum.reduce_while(ids, ids, fn(box_id, acc) ->
   differences = Enum.map(acc, fn(id) ->

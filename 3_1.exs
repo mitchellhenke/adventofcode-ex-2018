@@ -1,6 +1,5 @@
 File.read!("data/3.txt")
-|> String.split("\n")
-|> Enum.reject(& &1 == "")
+|> String.split("\n", trim: true)
 |> Enum.reduce({MapSet.new, MapSet.new}, fn(row, {all_points, conflict_points}) ->
   [_num, point_and_size] = String.split(row, "@ ")
   [point, size] = String.split(point_and_size, ": ")
